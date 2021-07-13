@@ -305,6 +305,8 @@ class ComponentContext(InteractionContext):
         _discord: typing.Union[discord.Client, commands.Bot],
         logger,
     ):
+        self.user = _json["member"]["user"]
+        self.channelid = int(_json["channel_id"], 10)
         self.custom_id = self.component_id = _json["data"]["custom_id"]
         self.component_type = _json["data"]["component_type"]
         super().__init__(_http=_http, _json=_json, _discord=_discord, logger=logger)
